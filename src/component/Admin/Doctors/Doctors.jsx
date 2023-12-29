@@ -30,7 +30,6 @@ import Loader from '../../Loader';
 const Doctors = () => {
   const dispatch = useDispatch();
   const { doctors } = useSelector(state => state.doctors);
-
   const { loading, error, message } = useSelector(state => state.delete);
 
   const [doctorName, setdoctorName] = useState('');
@@ -147,7 +146,7 @@ const Doctors = () => {
           </HStack>
           <Heading
             textTransform={'uppercase'}
-            children="All Doctors"
+            children={`All Doctors`}
             my="16"
             textAlign={['center', 'left']}
           />
