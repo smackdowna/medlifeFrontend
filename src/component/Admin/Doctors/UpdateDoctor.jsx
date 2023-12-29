@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoctorDetails, updateDoctor } from '../../../redux/actions/admin';
+import MetaData from '../../MetaData';
+import Loader from '../../Loader';
 
 export const fileUploadCss = {
   cursor: 'pointer',
@@ -126,6 +128,11 @@ const UpdateDoctor = () => {
   };
 
   return (
+    <>
+    <MetaData title="Admin--Update Doctor"/>
+    {loading ? (
+        <Loader />
+      ) : (
     <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
       <Container py="16">
         <form onSubmit={updateHandler}>
@@ -229,6 +236,9 @@ const UpdateDoctor = () => {
 
       <Sidebar />
     </Grid>
+      )}
+    </>
+    
   );
 };
 

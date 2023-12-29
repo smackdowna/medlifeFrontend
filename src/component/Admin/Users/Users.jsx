@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers, updateUser } from '../../../redux/actions/admin';
 import toast from 'react-hot-toast';
 import * as XLSX from 'xlsx';
+import MetaData from '../../MetaData';
+import Loader from '../../Loader';
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -68,7 +70,12 @@ const Users = () => {
   };
 
   return (
-    <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
+    <>
+    <MetaData title="Admin--Active Users" />
+      {loading ? (
+        <Loader />
+      ) : (
+      <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
       <Box p={['0', '16']} overflowX="auto">
         <Input
           maxW="intrinsic"
@@ -124,6 +131,8 @@ const Users = () => {
 
       <Sidebar />
     </Grid>
+      )}
+    </>
   );
 };
 

@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createDoctor } from '../../../redux/actions/admin';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import MetaData from '../../MetaData';
 
 export const fileUploadCss = {
   cursor: 'pointer',
@@ -100,6 +101,7 @@ const CreateDoctor = () => {
 
   return (
     <>
+    <MetaData title="Admin--Create Doctor"/>
       <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
         <Container py="16">
           <form onSubmit={submitHandler}>

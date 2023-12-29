@@ -15,10 +15,12 @@ import React, { useEffect } from 'react';
 import Sidebar from '../Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllReviews } from '../../../redux/actions/admin';
+import Loader from '../../Loader';
+import MetaData from '../../MetaData';
 
 const Reviews = () => {
   const dispatch = useDispatch();
-  const { reviews } = useSelector(state => state.reviews);
+  const { loading,reviews } = useSelector(state => state.reviews);
 
   
   useEffect(()=>{
@@ -28,7 +30,12 @@ const Reviews = () => {
  
 
   return (
-    <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
+    <>
+    <MetaData title="Admin--All Reviews" />
+      {loading ? (
+        <Loader />
+      ) : (
+      <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
       <Box p={['0', '16']} overflowX="auto">
         <Heading
           textTransform={'uppercase'}
@@ -60,6 +67,8 @@ const Reviews = () => {
 
       <Sidebar />
     </Grid>
+      )}
+    </>
   );
 };
 

@@ -24,6 +24,8 @@ import { deleteDoctor, getAllDoctors } from '../../../redux/actions/admin';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import * as XLSX from 'xlsx';
+import MetaData from '../../MetaData';
+import Loader from '../../Loader';
 
 const Doctors = () => {
   const dispatch = useDispatch();
@@ -49,7 +51,6 @@ const Doctors = () => {
 
       dispatch({ type: 'clearError' });
     }
-
 
     if (message) {
       toast.success(message);
@@ -111,6 +112,10 @@ const Doctors = () => {
 
   return (
     <>
+    <MetaData title="Admin--All Doctors" />
+      {loading ? (
+        <Loader />
+      ) : (
       <Grid minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
         <Box p={['0', '8']} overflowX="auto">
           <Input
@@ -187,6 +192,7 @@ const Doctors = () => {
 
         <Sidebar />
       </Grid>
+      )}
     </>
   );
 };
