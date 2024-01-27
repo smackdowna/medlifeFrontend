@@ -192,7 +192,7 @@ export const deleteDoctor = id => async dispatch => {
   try {
     dispatch({ type: 'deleteDoctorRequest' });
 
-    const { data } = await axios.delete(`${server}//doctor/${id}`, config);
+    const { data } = await axios.delete(`${server}/doctor/${id}`, config);
     dispatch({ type: 'deleteDoctorSuccess', payload: data.message });
   } catch (error) {
     console.error('Error creating doctor:', error.response.data.message);
