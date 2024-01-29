@@ -6,11 +6,13 @@ import {
   Container,
   FormLabel,
   Heading,
+  Image,
   Input,
   VStack,
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../redux/actions/userAction';
+import logo from "../../../assets/logo (1).png";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ const Login = () => {
     <>
       <Container h={'95vh'}>
         <VStack h={'full'} justifyContent="center" spacing={'16'}>
+        <Image src={logo} height={'57'}/>
           <Heading children={'Welcome To Medlife'} />
           <form onSubmit={submitHandler}>
             <Box my={'4'}>

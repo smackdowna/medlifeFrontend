@@ -1,9 +1,10 @@
-import { Button, Heading, VStack } from '@chakra-ui/react';
+import { Button,  Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiAddCircleFill, RiDashboardFill, RiEyeFill, RiLogoutBoxLine, RiRadarFill, RiUser3Fill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/actions/userAction';
+import logo from "../../assets/logo (1).png";
 
 const Sidebar = () => {
     const location = useLocation();
@@ -15,11 +16,12 @@ const Sidebar = () => {
 
   return (
     <VStack spacing={'8'} p="16" boxShadow={'-2px 0 10px rgba(107,70,193,0.5)'}>
-      <Heading
+      {/* <Heading
           children="MedLife"
           my="16"
           textAlign={['center', 'left']}
-        />
+        /> */}
+        <Image src={logo}/>
       <LinkButton Icon={RiDashboardFill} text="Dashboard" url={'dashboard'} active={location.pathname ==='/dashboard'}/>
       <LinkButton Icon={RiAddCircleFill} text="Create Doctors" url={'createdoctors'} active={location.pathname ==='/createdoctors'}/>
       <LinkButton Icon={RiEyeFill} text="Doctors" url={'doctors'} active={location.pathname ==='/doctors'}/>
