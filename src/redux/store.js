@@ -3,8 +3,8 @@ import { adminReducer, deleteDoctorReducer, doctorCountReducer, doctorDeatilsRed
 import { loginReducer } from './reducers/userReducer';
 
 
-export const server = 'http://localhost:5000/api/v1';
-//https://medlife-backen.vercel.app/api/v1
+export const server = 'https://medlife-backen.vercel.app/api/v1';
+//
 
 const store = configureStore({
   reducer: {
