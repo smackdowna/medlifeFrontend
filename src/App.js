@@ -14,6 +14,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import { ProtectedRoute } from 'protected-route-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from './redux/actions/userAction.js';
+import CreateBlog from './component/Admin/CreateBlog/createBlog.jsx';
+import Blogs from './component/Admin/Blogs/Blog.jsx';
+import UpdateBlog from './component/Admin/Blogs/UpdateBlog.jsx';
 
 function App() {
   const { isAuthenticated, message, error } = useSelector(state => state.login);
@@ -115,6 +118,31 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/createblog"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <CreateBlog />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blogs"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Blogs/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <UpdateBlog />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/reviews"
             element={

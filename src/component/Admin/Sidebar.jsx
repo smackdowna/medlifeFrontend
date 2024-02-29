@@ -16,11 +16,6 @@ const Sidebar = () => {
 
   return (
     <VStack spacing={'8'} p="16" boxShadow={'-2px 0 10px rgba(107,70,193,0.5)'}>
-      {/* <Heading
-          children="MedLife"
-          my="16"
-          textAlign={['center', 'left']}
-        /> */}
         <Image src={logo}/>
       <LinkButton Icon={RiDashboardFill} text="Dashboard" url={'dashboard'} active={location.pathname ==='/dashboard'}/>
       <LinkButton Icon={RiAddCircleFill} text="Create Doctors" url={'createdoctors'} active={location.pathname ==='/createdoctors'}/>
@@ -28,6 +23,8 @@ const Sidebar = () => {
       <LinkButton Icon={RiUser3Fill} text="Users" url={'users'} active={location.pathname ==='/users'}/>
       <LinkButton Icon={RiUser3Fill} text="Connected Users" url={'connected'} active={location.pathname ==='/connected'}/>
       <LinkButton Icon={RiRadarFill} text="Reviews" url={'reviews'} active={location.pathname ==='/reviews'}/>
+      <LinkButton Icon={RiRadarFill} text="Create Blog" url={'createblog'} active={location.pathname ==='/createblog'}/>
+      <LinkButton Icon={RiRadarFill} text="Blogs" url={'blogs'} active={location.pathname ==='/blogs'}/>
       <LinkButton Icon={RiLogoutBoxLine} text="Logout" url={''} logoutHandler={logoutHandler} />
     </VStack>
   );

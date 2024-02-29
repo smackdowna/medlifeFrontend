@@ -10,12 +10,13 @@ import {
   Input,
   VStack,
 } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../../redux/actions/userAction';
 import logo from "../../../assets/logo (1).png";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const{loading} = useSelector(state=>state.login);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -55,7 +56,7 @@ const Login = () => {
                 focusBorderColor="yellow.500"
               />
             </Box>
-            <Button my="4" colorScheme={'yellow'} type="submit">
+            <Button  isLoading={loading} my="4" colorScheme={'yellow'} type="submit">
               Login
             </Button>
           </form>
