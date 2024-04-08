@@ -55,6 +55,19 @@ const updateUserRequest = 'updateUserRequest';
 const updateUserSuccess = 'updateUserSuccess';
 const updateUserFail = 'updateUserFail';
 
+//update Review
+const updateReviewRequest = 'updateReviewRequest';
+const updateReviewSuccess = 'updateReviewSuccess';
+const updateReviewFail = 'updateReviewFail';
+
+
+//delete review
+const deleteReviewRequest = 'deleteReviewRequest';
+const deleteReviewSuccess = 'deleteReviewSuccess';
+const deleteReviewFail = 'deleteReviewFail';
+
+
+
 const deleteDoctorRequest = 'deleteDoctorRequest';
 const deleteDoctorSuccess = 'deleteDoctorSuccess';
 const deleteDoctorFail = 'deleteDoctorFail';
@@ -273,6 +286,55 @@ export const updateDoctorReducer = createReducer({}, builder => {
       state.error = null;
     })
     .addCase(clearMessage, state => {
+      state.message = null;
+    });
+});
+
+
+
+//delete review
+export const deleteReviewReducer = createReducer({}, builder => {
+  builder
+    .addCase(deleteReviewRequest, state => {
+      state.loading = true;
+    })
+    .addCase(deleteReviewSuccess, (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    })
+    .addCase(deleteReviewFail, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase(clearError, state => {
+      state.error = null;
+    })
+    .addCase(clearMessage, state => {
+      state.message = null;
+    });
+});
+
+
+
+
+//update Review
+export const updateReviewReducer = createReducer({}, builder => {
+  builder
+    .addCase(updateReviewRequest, state => {
+      state.loading = true;
+    })
+    .addCase(updateReviewSuccess, (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    })
+    .addCase(updateReviewFail, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase('clearError', state => {
+      state.error = null;
+    })
+    .addCase('clearMessage', state => {
       state.message = null;
     });
 });

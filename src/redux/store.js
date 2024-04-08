@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import {
   adminReducer,
   deleteDoctorReducer,
+  deleteReviewReducer,
   doctorCountReducer,
   doctorDeatilsReducer,
   doctorReducer,
   reviewCountReducer,
   reviewReducer,
   updateDoctorReducer,
+  updateReviewReducer,
   updateUserReducer,
   userConnReducer,
   userConnectedCountReducer,
@@ -23,8 +25,8 @@ import {
   updateBlogReducer,
 } from './reducers/BlogReducer';
 
-export const server = 'https://medlife-backen.vercel.app/api/v1';
-//
+export const server = 'http://localhost:5000/api/v1';
+//https://medlife-backen.vercel.app
 
 const store = configureStore({
   reducer: {
@@ -47,6 +49,8 @@ const store = configureStore({
     getSingleBlog: blogDeatilsReducer,
     deleteBlog: deleteBlogReducer,
     updateBlog: updateBlogReducer,
+    updateReview:updateReviewReducer,
+    deleteReview:deleteReviewReducer,
   },
 });
 

@@ -137,9 +137,12 @@ export const getUsersConnectedCount = () => async dispatch => {
 };
 
 export const getAllReviews = () => async dispatch => {
+  const config = {
+    withCredentials: true,
+  };
   try {
     dispatch({ type: 'allReviewRequest' });
-    const { data } = await axios.get(`${server}/reviews`);
+    const { data } = await axios.get(`${server}/areviews`,config);
 
     dispatch({ type: 'allReviewSuccess', payload: data.review });
   } catch (error) {
@@ -151,9 +154,13 @@ export const getAllReviews = () => async dispatch => {
 };
 
 export const getReviewsCount = () => async dispatch => {
+  const config = {
+    withCredentials: true,
+  };
   try {
     dispatch({ type: 'allReviewCountRequest' });
-    const { data } = await axios.get(`${server}/reviews`);
+    
+    const { data } = await axios.get(`${server}/areviews`,config);
 
     dispatch({ type: 'allReviewCountSuccess', payload: data.counts });
   } catch (error) {
@@ -223,6 +230,51 @@ export const updateUser = (id) => async dispatch => {
     });
   }
 };
+
+
+
+//delete Review
+export const deleteReview = id => async dispatch => {
+  const config = {
+    withCredentials: true,
+  };
+  try {
+    dispatch({ type: 'deleteReviewRequest' });
+
+    const { data } = await axios.delete(`${server}/reviewstatus/${id}`, config);
+    dispatch({ type: 'deleteReviewSuccess', payload: data.message });
+  } catch (error) {
+    console.error('Error creating doctor:', error.response.data.message);
+    dispatch({
+      type: 'deleteReviewFail',
+      payload: error.response.data.message,
+    });
+  }
+};
+
+
+
+//Approve review
+export const updateReview = (id) => async dispatch => {
+  const config = {
+    withCredentials: true,
+  };
+
+  try {
+    dispatch({ type: 'updateReviewRequest' });  
+    const { data } = await axios.put(`${server}/reviewstatus/${id}`, config);
+
+    dispatch({ type: 'updateReviewSuccess', payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: 'updateReviewFail',
+      payload: error.response.data.message,
+    });
+  }
+};
+
+
+
 
 export const updateDoctor = (id, formData) => async dispatch => {
   const config = {
