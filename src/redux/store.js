@@ -25,7 +25,7 @@ import {
   updateBlogReducer,
 } from './reducers/BlogReducer';
 
-export const server = 'http://localhost:5000/api/v1';
+export const server = 'https://medlife-backen.vercel.app/api/v1';
 //https://medlife-backen.vercel.app
 
 const store = configureStore({
